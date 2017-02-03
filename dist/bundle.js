@@ -87,6 +87,29 @@ var randomColor = function () {
 };
 randomColor();
 var ballElement = document.querySelector(".ball");
+var paddleElement = document.querySelector(".paddle");
+var a;
+var i;
+var j;
+var table = [];
+var tableInner = [];
+var b;
+for (i = 0; i < 3; i++) {
+    for (j = 0; j < 3; j++) {
+        var a_1 = Math.random();
+        if (a_1 <= 0.5) {
+            b = null;
+        }
+        else {
+            b = a_1;
+        }
+        tableInner[j] = b;
+    }
+    table[i] = tableInner;
+    tableInner = [];
+}
+;
+console.log(table);
 var Ball = (function () {
     function Ball(posX, posY, dirX, dirY) {
         this.posX = posX;
@@ -100,13 +123,13 @@ var Ball = (function () {
     };
     return Ball;
 }());
-var ball = new Ball(100, 100, -1, -1);
+var ball = new Ball(311, 438, 1, -1);
 setInterval(function () {
     var posX = ball.posX;
     var posY = ball.posY;
     ball.moveBall();
-    ballElement.style.left = (posX * -1) + "px";
-    ballElement.style.top = (posY * -1) + "px";
+    ballElement.style.left = (posX * 1) + "px";
+    ballElement.style.top = (posY * 1) + "px";
 }, 10);
 
 

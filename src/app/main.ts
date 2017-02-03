@@ -18,6 +18,30 @@ const randomColor= function() {
 randomColor();
 
 const ballElement: HTMLElement = <HTMLElement>document.querySelector(".ball");
+const paddleElement: HTMLElement = <HTMLElement>document.querySelector(".paddle");
+
+let a: number;
+let i: any;
+let j: any;
+let table: any = [];
+let tableInner: any = [];
+let b:any;
+for(i=0; i<3; i++){
+    for(j=0; j<3; j++){
+        let a: any = Math.random();
+        if(a<=0.5){
+            b = null;
+        }
+        else{
+            b = a;
+        }
+        tableInner[j]= b;
+    }
+        table[i] = tableInner;
+        tableInner = [];
+};
+console.log(table);
+
 
 class Ball {
     posX: number;
@@ -38,13 +62,13 @@ class Ball {
     }
 }
 
-const ball: Ball = new Ball(100, 100, -1, -1);
+const ball: Ball = new Ball(311, 438, 1, -1);
 
 setInterval(() => {
     let posX = ball.posX;
     let posY = ball.posY;
     ball.moveBall();
 
-    ballElement.style.left = (posX * -1) + "px";
-    ballElement.style.top = (posY * -1) + "px";
+    ballElement.style.left = (posX * 1) + "px";
+    ballElement.style.top = (posY * 1) + "px";
 }, 10);

@@ -5,6 +5,6 @@
         "sourceMap": true,
         "noEmitOnError": true,
         "noImplicitAny": false,
-        "experimentalDecorators": true,
+        "experimentalDecorators": true
     }
 }
