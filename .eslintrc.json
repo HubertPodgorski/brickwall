@@ -26,7 +26,7 @@
             "always"
         ],
         "no-console":"off",
-        "no-unused-vars":"warn",
-        "prefer-const":"error"
+        "prefer-const":"error",
+        "no-unused-vars": "warn"
     }
 }
