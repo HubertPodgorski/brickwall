@@ -72,45 +72,42 @@
 
 "use strict";
 
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+var randomColor = function () {
+    var i;
+    var j;
+    for (j = 1; j < 8; j++) {
+        for (i = 1; i < 9; i++) {
+            var R = Math.floor((Math.random() * 255) + 1);
+            var G = Math.floor((Math.random() * 255) + 1);
+            var B = Math.floor((Math.random() * 255) + 1);
+            var color = document.querySelector(".col-" + i + ".row-" + j);
+            color.style.backgroundColor = "rgb(" + R + "," + G + "," + B + ")";
+        }
+    }
 };
-var container = document.querySelector(".container");
-var Parent = (function () {
-    function Parent() {
-    }
-    Parent.prototype.getLength = function () {
-        this.length = 15;
-        return console.log(this.length);
-    };
-    return Parent;
-}());
+randomColor();
+var ballElement = document.querySelector(".ball");
 var Ball = (function () {
-    function Ball() {
+    function Ball(posX, posY, dirX, dirY) {
+        this.posX = posX;
+        this.posY = posY;
+        this.dirX = dirX;
+        this.dirY = dirY;
     }
+    Ball.prototype.moveBall = function () {
+        this.posX += this.dirX;
+        this.posY += this.dirY;
+    };
     return Ball;
 }());
-var MyClass = (function (_super) {
-    __extends(MyClass, _super);
-    function MyClass(width, top) {
-        var _this = _super.call(this) || this;
-        _this.width = width;
-        _this.top = top;
-        return _this;
-    }
-    MyClass.prototype.getSum = function () {
-        var localCounter = this.width + this.top;
-        console.log("localCounter", localCounter);
-        return this.width + this.top;
-    };
-    return MyClass;
-}(Parent));
-var counter = new MyClass(10, 10);
-counter.getSum();
-var onInit = function () { };
-onInit();
+var ball = new Ball(100, 100, -1, -1);
+setInterval(function () {
+    var posX = ball.posX;
+    var posY = ball.posY;
+    ball.moveBall();
+    ballElement.style.left = (posX * -1) + "px";
+    ballElement.style.top = (posY * -1) + "px";
+}, 10);
 
 
 /***/ })
