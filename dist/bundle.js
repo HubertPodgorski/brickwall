@@ -72,7 +72,43 @@
 
 "use strict";
 
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var container = document.querySelector(".container");
+var Parent = (function () {
+    function Parent() {
+    }
+    Parent.prototype.getLength = function () {
+        this.length = 15;
+        return console.log(this.length);
+    };
+    return Parent;
+}());
+var Ball = (function () {
+    function Ball() {
+    }
+    return Ball;
+}());
+var MyClass = (function (_super) {
+    __extends(MyClass, _super);
+    function MyClass(width, top) {
+        var _this = _super.call(this) || this;
+        _this.width = width;
+        _this.top = top;
+        return _this;
+    }
+    MyClass.prototype.getSum = function () {
+        var localCounter = this.width + this.top;
+        console.log("localCounter", localCounter);
+        return this.width + this.top;
+    };
+    return MyClass;
+}(Parent));
+var counter = new MyClass(10, 10);
+counter.getSum();
 var onInit = function () { };
 onInit();
 
